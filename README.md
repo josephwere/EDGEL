@@ -56,6 +56,14 @@ For local release engineering:
 scripts/release.sh
 ```
 
+## One-Click Deploy
+
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/josephwere/EDGEL&project-name=edgel-edgestudio&repository-name=EDGEL&build-command=npm%20run%20build:frontend&output-directory=dist/vercel&env=EDGEL_API_BASE&envDescription=Render%20backend%20URL%20(e.g.%20https://edgel-api.onrender.com))
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/josephwere/EDGEL)
+
+If you deploy both, set `EDGEL_ALLOWED_ORIGIN` on Render to your Vercel domain and set `EDGEL_API_BASE` on Vercel to your Render service URL.
+
 ## Quick Start
 
 ```bash
