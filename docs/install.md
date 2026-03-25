@@ -11,7 +11,7 @@ curl -sSL https://edgel.sh | bash
 Windows PowerShell installer:
 
 ```powershell
-irm https://edgel.sh | iex
+irm https://github.com/josephwere/EDGEL/releases/download/v0.1.0/edgel.ps1 | iex
 ```
 
 The installer script:
