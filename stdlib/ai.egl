@@ -1,0 +1,15 @@
+function aiPrompt(value: text): text {
+    return value
+}
+
+function aiLabel(value: text): text {
+    return value
+}
+
+function assistantTask(value: text): text {
+    return "NEUROEDGE " + value
+}
+
+function aiError(error): text {
+    return error.message
+}

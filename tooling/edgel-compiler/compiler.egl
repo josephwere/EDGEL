@@ -1,0 +1,20 @@
+import std.compiler
+import "lexer.egl"
+import "parser.egl"
+import "ir.egl"
+
+function describeCompilerTrack(): text {
+    return describeLexerStage() + " " + describeParserStage() + " " + describeIrStage()
+}
+
+function compileSource(source: text): text {
+    return emitCompilationReport(source)
+}
+
+function compileSnippet(source: text): text {
+    return compileTokens(source) + " | " + compileAst(source) + " | " + emitBytecode(source)
+}
+
+function compileHello(): text {
+    return compileSnippet("let value = 1")
+}

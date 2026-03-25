@@ -1,0 +1,5 @@
+import std.ui
+
+test "namespaced stdlib import works" {
+    assert(screenTitle("Namespaced") == "Namespaced", "std.ui should resolve")
+}

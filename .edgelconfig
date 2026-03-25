@@ -1,0 +1,5 @@
+theme = goldedge-sunrise
+preview_device = mobile
+ai_mode = local-neuroedge
+build_target = adaptive
+

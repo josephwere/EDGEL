@@ -1,0 +1,9 @@
+app HelloWorld {
+    screen Main {
+        text("Hello World 🌍")
+        button("Wave") {
+            alert("Hello from EDGEL")
+        }
+    }
+}
+

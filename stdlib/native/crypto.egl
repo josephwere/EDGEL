@@ -1,0 +1,4 @@
+function nativeModuleName(): text {
+    return "rust:crypto"
+}
+

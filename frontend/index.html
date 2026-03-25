@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoldEdge Browser | EdgeStudio</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-theme="dark">
+  <div class="studio-shell">
+    <header class="studio-titlebar">
+      <div class="titlebar-brand">
+        <div class="brand-mark">GE</div>
+        <div>
+          <p class="eyebrow">GoldEdge Browser Platform</p>
+          <h1>EdgeStudio</h1>
+        </div>
+      </div>
+
+      <div class="titlebar-center">
+        <button id="commandPaletteBtn" class="toolbar-button">Command Palette</button>
+        <button id="runBtn" class="toolbar-button primary">Run</button>
+        <button id="debugBtn" class="toolbar-button">Debug</button>
+        <button id="stopBtn" class="toolbar-button">Stop</button>
+        <button id="buildWebBtn" class="toolbar-button">Build Web</button>
+        <button id="buildApkBtn" class="toolbar-button">Build APK</button>
+      </div>
+
+      <div class="titlebar-actions">
+        <button id="explainBtn" class="toolbar-button">AI Explain</button>
+        <button id="fixBtn" class="toolbar-button">AI Fix</button>
+        <button id="splitViewBtn" class="toolbar-button">Split View</button>
+        <button id="themeBtn" class="toolbar-button">Light Theme</button>
+      </div>
+    </header>
+
+    <div class="studio-workbench">
+      <aside id="activityBar" class="activity-bar" aria-label="EdgeStudio activity bar"></aside>
+      <aside id="sidebar" class="sidebar-panel" aria-label="EdgeStudio sidebar"></aside>
+
+      <main class="main-stage">
+        <section id="editorArea" class="editor-area" aria-label="Editor area"></section>
+        <section id="bottomPanel" class="bottom-panel" aria-label="Bottom panel"></section>
+
+        <footer class="status-bar">
+          <div class="status-group">
+            <span id="statusMode" class="status-pill">Ready</span>
+            <span id="statusPath" class="status-text">examples/mobile.egl</span>
+          </div>
+          <div class="status-group status-group-end">
+            <span id="statusCursor" class="status-text">Ln 1, Col 1</span>
+            <span id="statusLanguage" class="status-text">EDGEL</span>
+            <span id="statusDebug" class="status-text">Debug idle</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div id="commandPalette" class="palette-overlay" hidden>
+    <div class="palette-dialog" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="palette-head">
+        <div class="palette-head-main">
+          <span class="palette-prefix">&gt;</span>
+          <input
+            id="commandPaletteInput"
+            class="palette-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Run commands, search actions, open files"
+          >
+        </div>
+        <button id="commandPaletteCloseBtn" class="palette-close" type="button" aria-label="Close command palette">
+          Close
+        </button>
+      </div>
+      <div id="commandPaletteResults" class="palette-results"></div>
+      <p class="palette-hint">Use Ctrl + Shift + P to open commands, arrow keys to move, Enter to run, and Esc or Close to dismiss.</p>
+    </div>
+  </div>
+
+  <script src="/config.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

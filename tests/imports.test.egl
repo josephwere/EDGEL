@@ -1,0 +1,4 @@
+import "support/math.egl"
+
+assert(add(2, 3) == 5, "imported add function should work")
+

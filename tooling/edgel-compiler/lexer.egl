@@ -1,0 +1,7 @@
+function describeLexerStage(): text {
+    return "Tokenize source into EDGEL-compatible tokens."
+}
+
+function compileTokens(source: text): text {
+    return coreCompilerTokens(source)
+}

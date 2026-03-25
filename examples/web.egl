@@ -1,0 +1,11 @@
+web MySite {
+    page "/" {
+        h1("Welcome to My Site")
+        p("Powered by EDGEL 🚀")
+    }
+
+    api "/time" {
+        return { message: "Hello from EDGEL API" }
+    }
+}
+

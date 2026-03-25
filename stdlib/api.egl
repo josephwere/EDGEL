@@ -1,0 +1,19 @@
+function endpoint(path: text): text {
+    return path
+}
+
+function jsonMessage(value: text): text {
+    return value
+}
+
+function requestLabel(method: text, path: text): text {
+    return method + " " + path
+}
+
+function asyncRequest(path: text): text {
+    return "await " + path
+}
+
+function apiError(error): text {
+    return error.message
+}

@@ -1,0 +1,13 @@
+{
+  "name": "edgel-platform",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "build:frontend": "node scripts/build-frontend.mjs",
+    "check:frontend": "node --check frontend/app.js && node --check frontend/activity-bar.js && node --check frontend/sidebar.js && node --check frontend/editor.js && node --check frontend/terminal.js && node --check frontend/debug-panel.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

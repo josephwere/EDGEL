@@ -1,0 +1,15 @@
+function hookLabel(value: text): text {
+    return value
+}
+
+function pluginChannel(value: text): text {
+    return value
+}
+
+function pluginPermission(value: text): text {
+    return value
+}
+
+function pluginSummary(name: text, hook: text): text {
+    return name + ":" + hook
+}

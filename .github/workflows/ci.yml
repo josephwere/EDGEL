@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Rust tests
+        run: cargo test
+
+      - name: Build EdgeStudio frontend
+        run: node scripts/build-frontend.mjs
+
+      - name: Frontend syntax checks
+        run: npm run check:frontend
+
+      - name: Shell script lint
+        run: bash -n edgel.sh && bash -n scripts/release.sh && bash -n scripts/install.sh

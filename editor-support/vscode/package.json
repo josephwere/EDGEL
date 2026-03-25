@@ -1,0 +1,27 @@
+{
+  "name": "edgel-language-tools",
+  "displayName": "EDGEL Language Tools",
+  "description": "Syntax support scaffold for the Edge Global Language.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "edgel",
+        "aliases": ["EDGEL", "edgel"],
+        "extensions": [".egl", ".edgel"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "edgel",
+        "scopeName": "source.egl",
+        "path": "./syntaxes/edgel.tmLanguage.json"
+      }
+    ]
+  }
+}

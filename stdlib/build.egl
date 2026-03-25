@@ -1,0 +1,8 @@
+function buildTarget(value: text): text {
+    return value
+}
+
+function artifactName(value: text): text {
+    return value
+}
+

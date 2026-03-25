@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build release archive
+        run: scripts/release.sh
+        env:
+          EDGEL_VERSION: ${{ github.ref_name }}
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.os }}
+          path: dist/releases/${{ github.ref_name }}
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist/releases/${{ github.ref_name }}
+
+      - name: Normalize release directory
+        run: |
+          mkdir -p "dist/releases/${{ github.ref_name }}/merged"
+          find "dist/releases/${{ github.ref_name }}" -type f -maxdepth 2 | while read -r file; do
+            cp "$file" "dist/releases/${{ github.ref_name }}/merged/" || true
+          done
+          rm -rf "dist/releases/${{ github.ref_name }}"
+          mkdir -p "dist/releases/${{ github.ref_name }}"
+          mv "dist/releases/${{ github.ref_name }}/merged"/* "dist/releases/${{ github.ref_name }}/"
+
+      - name: Generate manifest
+        run: |
+          cd "dist/releases/${{ github.ref_name }}"
+          {
+            echo "{"
+            echo "  \"version\": \"${{ github.ref_name }}\","
+            echo "  \"artifacts\": ["
+            first=1
+            for file in edgel-${{ github.ref_name }}-*.*; do
+              if [ ! -f "$file" ]; then
+                continue
+              fi
+              sha=$(sha256sum "$file" | awk '{print $1}')
+              target=$(echo "$file" | sed -E 's/edgel-${{ github.ref_name }}-(.+)\.(tar\.gz|zip)$/\1/')
+              if [ $first -eq 0 ]; then
+                echo "    ,"
+              fi
+              first=0
+              echo "    {\"target\":\"${target}\",\"archive\":\"${file}\",\"sha256\":\"${sha}\"}"
+            done
+            echo "  ]"
+            echo "}"
+          } > manifest.json
+          cp ../../../../edgel.sh ./edgel.sh
+          if [ -f ../../../../edgel.ps1 ]; then
+            cp ../../../../edgel.ps1 ./edgel.ps1
+          fi
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/releases/${{ github.ref_name }}/*

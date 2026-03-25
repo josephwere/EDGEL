@@ -1,0 +1,13 @@
+model tutor {
+    engine: "NEUROEDGE"
+}
+
+app LearningApp {
+    screen Main {
+        text("Ask NEUROEDGE for help")
+        button("Generate Lesson") {
+            print(tutor.generateLesson("Loops in EDGEL"))
+        }
+    }
+}
+

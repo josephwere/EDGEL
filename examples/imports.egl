@@ -1,0 +1,9 @@
+import "modules/ui.egl"
+
+app ImportedDemo {
+    screen Main {
+        header(title("Imported UI Module"))
+        text("Modules now load from sibling files and src/main.egl projects.")
+    }
+}
+

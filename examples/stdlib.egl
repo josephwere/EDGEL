@@ -1,0 +1,8 @@
+import std.ui
+
+app StdlibDemo {
+    screen Main {
+        header(screenTitle("EDGEL Standard Library"))
+        text(helperText("This screen pulls helpers from stdlib/ui.egl"))
+    }
+}

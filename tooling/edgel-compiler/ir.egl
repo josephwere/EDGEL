@@ -1,0 +1,7 @@
+function describeIrStage(): text {
+    return "Normalize AST into a portable intermediate form."
+}
+
+function emitBytecode(source: text): text {
+    return coreCompilerBytecode(source)
+}

@@ -1,0 +1,15 @@
+function add(a: number, b: number): number {
+    return a + b
+}
+
+test "addition block works" {
+    assert(add(2, 2) == 4, "test blocks should execute named cases")
+}
+
+test "try catch in tests works" {
+    try {
+        assert(false, "boom")
+    } catch err {
+        assert(err.message == "boom", "catch should expose errors inside test blocks")
+    }
+}

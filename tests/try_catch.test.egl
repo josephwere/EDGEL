@@ -1,0 +1,10 @@
+function fail() {
+    assert(false, "boom")
+}
+
+try {
+    fail()
+} catch err {
+    assert(err.message == "boom", "catch should expose the error message")
+}
+

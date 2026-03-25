@@ -1,0 +1,23 @@
+function screenTitle(value: text): text {
+    return value
+}
+
+function helperText(value: text): text {
+    return value
+}
+
+function buttonLabel(value: text): text {
+    return value
+}
+
+function cardTitle(value: text): text {
+    return value
+}
+
+function uiStatus(label: text, value: text): text {
+    return label + ": " + value
+}
+
+function recoverMessage(error): text {
+    return error.message
+}

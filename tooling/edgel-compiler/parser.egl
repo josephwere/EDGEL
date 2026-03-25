@@ -1,0 +1,7 @@
+function describeParserStage(): text {
+    return "Build AST nodes from token streams."
+}
+
+function compileAst(source: text): text {
+    return coreCompilerIr(source)
+}

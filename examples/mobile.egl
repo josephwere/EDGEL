@@ -1,0 +1,23 @@
+app MobileApp {
+    screen Main {
+        header("My App")
+        input name("Enter your name")
+
+        button("Greet") {
+            alert("Hello " + name.value)
+        }
+
+        button("Go to Dashboard") {
+            navigate("Dashboard")
+        }
+    }
+
+    screen Dashboard {
+        text("Welcome to Dashboard 🚀")
+    }
+
+    permissions {
+        internet
+    }
+}
+

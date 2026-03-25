@@ -1,0 +1,19 @@
+function tableName(value: text): text {
+    return value
+}
+
+function recordId(value: number): number {
+    return value
+}
+
+function queryLabel(table: text): text {
+    return "query " + table
+}
+
+function datasetLabel(table: text, field: text): text {
+    return table + "." + field
+}
+
+function dbError(error): text {
+    return error.message
+}

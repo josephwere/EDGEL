@@ -1,0 +1,15 @@
+function tokenView(source: text): text {
+    return coreCompilerTokens(source)
+}
+
+function irView(source: text): text {
+    return coreCompilerIr(source)
+}
+
+function bytecodeView(source: text): text {
+    return coreCompilerBytecode(source)
+}
+
+function emitCompilationReport(source: text): text {
+    return tokenView(source) + " | " + irView(source) + " | " + bytecodeView(source)
+}
